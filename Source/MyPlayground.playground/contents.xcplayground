@@ -5,5 +5,8 @@
         <page name='2.NotificationTest'/>
         <page name='3.Subjects&amp;Variables'/>
         <page name='4.Observable&amp;Subject Practice'/>
+        <page name='5.Filtering Operators'/>
+        <page name='6.Transforming Operators By Scott Gardner'/>
+        <page name='7.Transforming inner observables'/>
     </pages>
 </playground>
