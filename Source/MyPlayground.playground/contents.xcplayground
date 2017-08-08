@@ -8,7 +8,5 @@
         <page name='5.Filtering Operators'/>
         <page name='6.Transforming Operators By Scott Gardner'/>
         <page name='7.Transforming inner observables'/>
-        <page name='8.Transforming Operators in Practice By Marin Todorov'/>
-        <page name='9.Prefixing and concatenating'/>
     </pages>
 </playground>
