@@ -128,13 +128,13 @@ example(of: "Challenge1") {
 }
 
 example(of: "Challenge2") {
-    
+
     let convert: (String) -> UInt? = { value in
-        
+
         if let number = UInt(value), number < 10 {
             return number
         }
-        
+
         let convert: [String: UInt] = [
             "abc": 2,
             "def": 3,
@@ -151,10 +151,10 @@ example(of: "Challenge2") {
                 converted = convert[$0]
             }
         }
-        
+
         return converted
     }
-    
+
     let format: ([UInt]) -> String = {
         var phone = $0.map(String.init).joined()
         phone.insert ( "-", at: phone.index(
@@ -167,21 +167,42 @@ example(of: "Challenge2") {
             offsetBy: 7
             )
         )
-        
+
         return phone
     }
-    
+
 }
 
 
-example(of: "FlatMap sample2") {
-    
-    Obserable.of(1,2,3,4, nil)
-        .unwrap() //
-        .subscribe ({
-            print("\($0)")
-        })
-}
+
+
+
+//example(of: "FlatMap sample2") {
+//
+//    extension ObservableType {
+//        func unwrap<R: Optionable>(_ transform: @escaping ((E) -> R)) -> Observable<R.Wrapped> {
+//            return flatMap { (element: E) -> Observable<R.Wrapped> in
+//                transform(element).flatMap(Observable.just) ?? Observable.empty()
+//            }
+//        }
+//    }
+//
+//    let disposeBag = DisposeBag()
+//    
+//    Observable.of(1,2,3,4, nil)
+//        .flatMap({ $0 == nil ? Observable.empty() : Observable.just($0) })
+//        .subscribe ({
+//            print("\($0)")
+//        })
+//        .disposed(by: disposeBag)
+//    
+//    Observable.of(1,2,3,4, nil)
+//        .unwrap
+//        .subscribe ({
+//            print("\($0)")
+//        })
+//    
+//}
 
 
 
