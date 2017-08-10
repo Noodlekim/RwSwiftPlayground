@@ -10,8 +10,8 @@ example(of: "take") {
     let disposeBag = DisposeBag()
     
     Observable.of(1,2,3,1,2,3)
-//        .skip(1)
-        .skipWhile({ $0 < 2 }) // ture -> skip, false -> no skip 한번 스킵이 해제가 되면 그다음부터 안봄
+        .skip(1)
+//        .skipWhile({ $0 < 2 }) // ture -> skip, false -> no skip 한번 스킵이 해제가 되면 그다음부터 안봄
 //        .take(1) // 필터에 의해서 한번 조건만큼 onNext를 받고 그이후로는 다 차단
         .throttle(1.0, scheduler: MainScheduler.instance) // 0.3초 동안 막아줌.
         .take(10, scheduler: MainScheduler.instance)

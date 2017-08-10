@@ -48,7 +48,36 @@ example(of: "FlatMap") {
      */
 }
 
-example(of: "test2") { 
+example(of: "FlatMapFirst") {
+    
+//    let t = Observable<Int>
+//        .interval(0.5, scheduler: MainScheduler.instance)	// 0.5초마다 발행
+////    .replay(4)
+//        .take(4)		// 4번 발행
+    
+
+    let t = Observable<Int>
+        .interval(RxTimeInterval(1.0 / Double(0.2)), scheduler: MainScheduler.instance)
+        .replay(1)
+    
+    t.flatMap { (x: Int) -> Observable<Int> in
+        let newTimer = Observable<Int>
+            .interval(RxTimeInterval(0.2), scheduler: MainScheduler.instance)	// 0.2초마다 발행
+            .take(2)		// 4번 발행
+            .map({ (value) -> Int in
+                print("map value \(value)")
+                return value
+            })
+        return newTimer
+        }
+    .subscribe {
+        print("Result : \($0)")
+    }
+
+}
+
+
+example(of: "test2") {
     var value = Variable<Int>.init(20)
     
     value.asObservable()

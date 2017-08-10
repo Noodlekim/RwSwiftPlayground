@@ -10,5 +10,9 @@
         <page name='7.Transforming inner observables'/>
         <page name='8.Transforming Operators in Practice By Marin Todorov'/>
         <page name='9.Prefixing and concatenating'/>
+        <page name='10.OurPlanet'/>
+        <page name='11.Time Based Operators'/>
+        <page name='12.RxCococa test'/>
+        <page name='14.Error Handling in Practice'/>
     </pages>
 </playground>

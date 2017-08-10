@@ -47,15 +47,15 @@ example(of: "Observable") {
     
     
     observable2.subscribe(onNext: { (element) in
-        print("newValue \(element)")
+        print("newValue2 \(element)")
     })
     
     observable3.subscribe(onNext: { (element) in
-        print("newValue \(element)")
+        print("newValue3 \(element)")
     })
     
     observable4.subscribe(onNext: { (element) in
-        print("newValue \(element)")
+        print("newValue4 \(element)")
     })
 }
 
@@ -69,6 +69,11 @@ example(of: "empty") {
         }, onCompleted: { 
             print("Completed")
         })
+    
+    /*
+     --- Example of: empty ---
+     Completed
+     */
 }
 
 example(of: "never") {
@@ -80,6 +85,10 @@ example(of: "never") {
         }, onCompleted: {
             print("Completed")
         })
+    /*
+     --- Example of: never ---
+     Disposed
+     */
 }
 
 example(of: "range") {
@@ -292,3 +301,23 @@ NotificationCenter.default.rx.notification(Notification.Name.UIDeviceOrientation
 
 
 
+example(of: "ShareReplay") { 
+    
+    
+    let observe = Observable.of(1,2,3,4,5)
+    observe
+        .map({ $0 + 100})
+        .replay(2)
+        .refCount()
+        .subscribe(onNext: { (value) in
+            print("value \(value)")
+        }, onError: { (error) in
+            print("error \(error)")
+        }, onCompleted: { 
+            print("onCompleted")
+        }, onDisposed: { 
+            print("onDisposed")
+        })
+    
+    
+}
